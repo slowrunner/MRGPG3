@@ -1,0 +1,9 @@
+log
+.log
+build
+bin
+lib
+__pycache__
+.cmake
+CMakeCache.txt
+
