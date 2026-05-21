@@ -33,14 +33,30 @@
  *      void  spin_right(): spin in place clockwise
  *      void  spin_left(): spin in place counter-clockwise
  *      void  steer(int left_percent, int right_percent):  -100 to +100
- *      target_reached(left_tgt_degrees, right_tgt_degrees):  use to detect when to stop forward(), backward(), right(), left(), spin_right(), spin_left()
+ *      target_reached(left_tgt_degrees, right_tgt_degrees):  use to detect when to stop 
+ *                                                            forward(), backward(), right(), left(), spin_right(), spin_left()
  *                                                            and for non-blocking drive_cm() or drive_inches()
- *      reset_encoders(): resets both encoders to 0
- *      read_encoders(out:left, out:right, in:units=CM/INCH/DEGREE)
- *      read_encoders_average(out:ave, in:units=CM/INCH/DEGREE)
+ *      void reset_encoders(bool blocking = true): resets both encoders to 0, 
+ *                                                 if blocking=true waits till both motors have stopped
+ *      pair(int32_t, int32_t) read_encoders(string& units = "cm") returns (left,right) encoder in degrees or converted to a distance  
+ *                                                   units: {"cm","in","inch","inches","raw") 
+ *                                                   "raw" causes encoder degree average for both left and right
+ *      float read_encoders_average(units = "cm") returns average of left and right encoders in degrees or optionall convert to distance
+ *                                                   units: {"cm","in","inch","inches","raw") 
+ *                                                   "raw" causes encoder degree average for both left and right
  *      void drive_degrees( float degrees, bool blocking=true): drive by turning each wheel degrees
  *      void turn_degrees(in:deg, blocking=true):  left: negative degrees
- *      blinker_on(id:{LEFT,RIGHT}
+ *      void orbit(float degrees, float radius_cm = 0.0f, bool blocking = true)  Orbit with radius to inside wheel
+ *      float volt();  return battery voltage as float
+ *      void blinker_on(int id)   0=Left,1=Right
+ *      void blinker_off(int id)  0=Left 1=Right
+ *      void blinker_on(string&  id)   "left" or "right"
+ *      void blinker_off(string& id)   "left" or "right"
+ *      void led_on(int id)        alias for blinker_on
+ *      void led_on(string& id)    alias for blinker_on
+ *      void led_off(int id)       alias for blinker_off
+ *      void led_ff(string& id)    alias for blinker_off
+ *
  *      set_left_eye_color(R,G,B)
  *      set_right_eye_color(R,G,B)
  *      set_eye_color(R,G,B)
@@ -51,6 +67,7 @@
  *      close_right_eye()
  *      close_eyes()
  *
+ * 
  */
 
 #ifndef EasyGoPiGo3_h_
