@@ -8,6 +8,8 @@
  *  C++ port of EasyGoPiGo3 Python library
  *  Sensor functions for distance sensor, IMU, etcetera are intentionally excluded.
  *
+ *  using RGBColor = tuple(uint8_t R, uint8_t G, uint8_t B)
+ *
  *  Class EasyGoPiGo3(string config_file_path): public GoPiGo3
  *    config_file_path defaults to ~/.gpg3_config.json
  *    Inherits all GoPiGo3 instance vars and methods
@@ -55,17 +57,17 @@
  *      void led_on(int id)        alias for blinker_on
  *      void led_on(string& id)    alias for blinker_on
  *      void led_off(int id)       alias for blinker_off
- *      void led_ff(string& id)    alias for blinker_off
+ *      void led_off(string& id)   alias for blinker_off
  *
- *      set_left_eye_color(R,G,B)
- *      set_right_eye_color(R,G,B)
- *      set_eye_color(R,G,B)
- *      open_left_eye()
- *      open_right_eye()
- *      open_eyes()
- *      close_left_eye()
- *      close_right_eye()
- *      close_eyes()
+ *      void set_left_eye_color(RGBColor& color)
+ *      void set_right_eye_color(RGBColor& color)
+ *      void set_eye_color(RGBColor& color)    set both left and right to same color
+ *      void open_left_eye()   turn on left eye  (to the stored left eye  color)
+ *      void open_right_eye()  turn on right eye (to the stored right eye color)
+ *      void open_eyes()       turn on both right and left eyes (with respective stored color)
+ *      void close_left_eye()  turn off left eye programmable LED
+ *      void close_right_eye() turn off right eye programmable LED
+ *      void close_eyes()      turn off both right and left programmable "eye" LEDs
  *
  * 
  */
