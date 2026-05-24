@@ -1,17 +1,17 @@
 /*
- *  test_EasyGoPiGo3.cpp
+ *  testEasyGoPiGo3.cpp
  *
  *  Example / smoke-test program for the EasyGoPiGo3 C++ library.
  *
  *  Build (on the GoPiGo3 Raspberry Pi):
  *
  *    g++ -std=c++17 -o test_EasyGoPiGo3 \
- *        test_EasyGoPiGo3.cpp EasyGoPiGo3.cpp GoPiGo3.cpp \
+ *        testEasyGoPiGo3.cpp EasyGoPiGo3.cpp GoPiGo3.cpp \
  *        -lrt -lm
  *
- *  Run as root (SPI requires elevated access):
+ *  Note: Co-written by Claude and Slowrunner
  *
- *    sudo ./test_EasyGoPiGo3
+ *    run:  ./testEasyGoPiGo3
  */
 
 #include "EasyGoPiGo3.h"

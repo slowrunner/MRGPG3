@@ -2,7 +2,7 @@
 
 
 This C++ project builds:
-- libgopigo3.lib.a:  GoPiGo3 C++ API link library
+- libgopigo3.lib.a:  GoPiGo3 and EasyGoPiGo3 C++ API link library
 - SAMPLE ROBOT
   - myrobot:           C++ program to drive the GoPiGo3 using keyboard commands
 - API USE EXAMPLES
@@ -14,18 +14,25 @@ This C++ project builds:
   - motors
   - sensors
   - servos
-  - testEasyGoPiGo3
+  - testEasyGoPiGo3  Used to test all EasyGoPiGo3 C++ API methods
   - vbatt
 
 ### Structure:  
 ```
   build/
     lib/    libgopigo3_cpp.a
-    bin/    myrobot Example executables
     build/  (CMake temp files - safe to delete)
+    build/bin/    myrobot and Examples/ executables
 ```
 
-### To build the executables:  ```bash build_gopigo3proj.sh```
+### To build the executables:  
+```
+bash build_gopigo3proj.sh
+or
+./build_gopigo3proj.sh
+```
+NOTE:  GoPiGo3.cpp will throw some warnings - don't know how to eliminate properly.
+
 
 To run the executables:
 ```
@@ -50,6 +57,6 @@ Dexter Industries and later Modular Robotics have never released a GoPiGo3 C++ E
 My gopigo3proj contains:  
 - My "fixes" to the New Install GoPiGo3 C++ API (pull request in place)
 - EasyGoPiGo3.cpp and .h prototypes that were trans-coded from EasyGoPiGo3.py by Claude Code  
-  and under active testing, debug, and documentation  
+  and passed testing by Examples/testEasyGoPiGo3.cpp (co-written with Claude by slowrunner)  
      
 
