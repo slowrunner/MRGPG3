@@ -59,7 +59,16 @@ int main() {
     std::cout << "Board         : " << board  << '\n';
     std::cout << "HW version    : " << hw_ver << '\n';
     std::cout << "FW version    : " << fw_ver << '\n';
-    std::cout << "Serial ID     : " << id     << '\n';
+
+    std::cout << "\n=== Class Constants ===\n";
+    std::cout << "gpg.WHEEL_BASE_WIDTH - - - - - : " << gpg.WHEEL_BASE_WIDTH     << '\n';
+    std::cout << "gpg.WHEEL_DIAMETER             : " << gpg.WHEEL_DIAMETER     << '\n';
+    std::cout << "gpg.WHEEL_BASE_CIRCUMFERENCE - : " << gpg.WHEEL_BASE_CIRCUMFERENCE     << '\n';
+    std::cout << "gpg.WHEEL_CIRCUMFERENCE        : " << gpg.WHEEL_CIRCUMFERENCE     << '\n';
+    std::cout << "gpg.MOTOR_GEAR_RATIO  - - - -  : " << gpg.MOTOR_GEAR_RATIO     << '\n';
+    std::cout << "gpg.ENCODER_TICKS_PER_ROTATION : " << gpg.ENCODER_TICKS_PER_ROTATION     << '\n';
+    std::cout << "gpg.MOTOR_TICKS_PER_DEGREE  -  : " << gpg.MOTOR_TICKS_PER_DEGREE     << '\n';
+
 
     // ------------------------------------------------------------------
     // 3. Voltage  (no movement - no prompt needed)
@@ -83,22 +92,27 @@ int main() {
     // ------------------------------------------------------------------
     wait_for_enter("Eye LEDs");
 
-    std::cout << "Opening eyes (turquoise default)...\n";
+    std::cout << "Opening both eyes (turquoise default)..., close left, close right\n";
     gpg.open_eyes();
     sleep(1);
+    gpg.close_left_eye();
+    sleep(1);
+    gpg.close_right_eye();
 
-    std::cout << "Changing to red...\n";
+    std::cout << "Changing to red... open left, open right\n";
     gpg.set_eye_color({255, 0, 0});
-    gpg.open_eyes();
+    gpg.open_left_eye();
+    sleep(1);
+    gpg.open_right_eye();
     sleep(1);
 
-    std::cout << "Left eye green, right eye blue...\n";
+    std::cout << "Left eye green, right eye blue...open both eyes\n";
     gpg.set_left_eye_color({0, 255, 0});
     gpg.set_right_eye_color({0, 0, 255});
     gpg.open_eyes();
     sleep(1);
 
-    std::cout << "Closing eyes...\n";
+    std::cout << "Closing both eyes...\n";
     gpg.close_eyes();
     sleep(1);
 
@@ -125,50 +139,63 @@ int main() {
     gpg.led_off(1);
 
     // ------------------------------------------------------------------
-    // 7. Encoder reset and read
+    // 7. Drive forward 30.5 cm (blocking)
     // ------------------------------------------------------------------
-    wait_for_enter("Encoder reset and read");
+    wait_for_enter("Drive 30.5 cm forward at 125 DPS");
 
+    gpg.set_speed(125);
     gpg.reset_encoders();
-    auto [l0, r0] = gpg.read_encoders();
-    std::cout << "After reset  - left: " << l0 << " deg  right: " << r0 << " deg\n";
 
-    // ------------------------------------------------------------------
-    // 8. Drive forward 20 cm (blocking)
-    // ------------------------------------------------------------------
-    wait_for_enter("Drive 20 cm forward");
-
-    gpg.set_speed(300);
-    std::cout << "Driving 20 cm forward...\n";
-    gpg.drive_cm(20.0f, true);
+    std::cout << "Reset Encoders and Drive 30.5 cm forward...\n";
+    gpg.drive_cm(30.5f, true);
     std::cout << "Done.\n";
 
     auto [l1, r1] = gpg.read_encoders();
     std::cout << "Encoders  - left: " << l1 << " deg  right: " << r1 << " deg\n";
     std::cout << "Average   - " << gpg.read_encoders_average("cm") << " cm\n";
+    std::cout << "Average   - " << gpg.read_encoders_average("inch") << " inches\n";
     sleep(1);
 
     // ------------------------------------------------------------------
-    // 9. Drive backward 20 cm (blocking)
+    // 8. Encoder reset and read
     // ------------------------------------------------------------------
-    wait_for_enter("Drive 20 cm backward");
+    wait_for_enter("Encoder reset and read");
 
-    std::cout << "Driving 20 cm backward...\n";
-    gpg.drive_cm(-20.0f, true);
+    auto [l0, r0] = gpg.read_encoders();
+    std::cout << "Before reset  - left: " << l0 << " deg  right: " << r0 << " deg\n";
+
+    gpg.reset_encoders();
+
+    auto [le1, re1] = gpg.read_encoders();
+    std::cout << "After reset  - left: " << le1 << " deg  right: " << re1 << " deg\n";
+
+    // ------------------------------------------------------------------
+    // 9. Drive backward 30.5 cm (blocking)
+    // ------------------------------------------------------------------
+    wait_for_enter("Drive 30.5 cm backward");
+
+    std::cout << "Driving 30.5 cm backward...\n";
+    gpg.drive_cm(-30.5f, true);
+    std::cout << "Encoder Average   - " << gpg.read_encoders_average("inch") << " inches\n";
     std::cout << "Done.\n";
     sleep(1);
 
     // ------------------------------------------------------------------
-    // 10. Drive 6 inches forward (and return)
+    // 10. Drive 12 inches forward (and return)
     // ------------------------------------------------------------------
-    wait_for_enter("Drive 6 inches forward then return");
+    wait_for_enter("Drive 12 inches forward then return");
+    gpg.reset_encoders();
 
-    std::cout << "Driving 6 inches forward...\n";
-    gpg.drive_inches(6.0f, true);
+    std::cout << "Driving 12 inches forward...\n";
+    gpg.drive_inches(12.0f, true);
+
     std::cout << "Done. Returning...\n";
+    std::cout << "Average   - " << gpg.read_encoders_average("inch") << " inches\n";
+
     sleep(1);
-    gpg.drive_inches(-6.0f, true);
+    gpg.drive_inches(-12.0f, true);
     std::cout << "Back at start.\n";
+    std::cout << "Average   - " << gpg.read_encoders_average("inch") << " inches\n";
     sleep(1);
 
     // ------------------------------------------------------------------
@@ -177,11 +204,11 @@ int main() {
     wait_for_enter("Turn 90 deg right then 90 deg left");
 
     std::cout << "Turning 90 deg right...\n";
-    gpg.turn_degrees(90.0f, true);
+    gpg.turn_degrees(90.0, true);
     sleep(1);
 
     std::cout << "Turning 90 deg left (returning to heading)...\n";
-    gpg.turn_degrees(-90.0f, true);
+    gpg.turn_degrees(-90.0, true);
     sleep(1);
 
     // ------------------------------------------------------------------

@@ -48,7 +48,7 @@
  *                                                   "raw" causes encoder degree average for both left and right
  *      void drive_degrees( float degrees, bool blocking=true): drive by turning each wheel degrees
  *      void turn_degrees(in:deg, blocking=true):  left: negative degrees
- *      void orbit(float degrees, float radius_cm = 0.0f, bool blocking = true)  Orbit with radius to inside wheel
+ *      void orbit(float degrees, float radius_cm = 0.0f, bool blocking = true)  Orbit with radius to center of GoPiGo3
  *      float volt();  return battery voltage as float
  *      void blinker_on(int id)   0=Left,1=Right
  *      void blinker_off(int id)  0=Left 1=Right
