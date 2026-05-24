@@ -8,11 +8,9 @@ There are two folders:
                            - with mod making header defined vars and function as static to prevent duplicate error
   
 - gopigo3proj            which is a more typical C++ project structure  
-                           - with gopigo3_cpp building the gopigo3 link library  
-                           - Examples building the example executables  
+                           - with gopigo3_cpp building the gopigo3 link library for GoPiGo3 and EasyGoPiGo3 C++ API  
+                           - Examples building executables that use the GoPiGo3 and EasyGoPiGo3 C++ APIs  
                            - robot building "myrobot" executable similar to Examples/drive.cpp  
-                           - In Progress: EasyGoPiGo3.cpp and EasyGoPiGo3.h  
-                             - "trans-coded" from Python to C++ by Claude Code  
-                             - active testing, debug, and documentation  
 ```
 
+NOTE: EasyGoPiGo3 C++ API only exists in gopigo3proj
