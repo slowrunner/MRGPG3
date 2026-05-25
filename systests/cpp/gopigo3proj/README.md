@@ -60,3 +60,28 @@ My gopigo3proj contains:
   and passed testing by Examples/testEasyGoPiGo3.cpp (co-written with Claude by slowrunner)  
      
 
+
+### To run Examples (after make):    
+- ```build/bin/info```        - reads GoPiGo3 red board information and reports battery voltage    
+- ```build/bin/vbatt```       - reports battery voltage reading and VCC (5v) voltage     
+                                Actual battery voltage is 0.8v higher than reported    
+                                due to reverse polarity protection diode drop.  
+- ```build/bin/leds```        - cycles center "WiFi LED" through colors  
+- ```build/bin/servos```      - centers properly attached servos  
+                                (Servo1: brown wire closest to front of robot)  
+                                (Servo2: brown wire closest to back of robot)  
+- ```build/bin/motors```      - Gently rotate robot's left wheel in a forward direction    
+                                Robot's right wheel will rotate to match left wheel encoder value  
+- ```build/bin/sensors```     - Reports Grove Ultrasonic Ranger (connected to AD1) range in millimeters  
+                                Reports Infrared Remote Control (connected to AD2) code  
+- ```build/bin/i2c```         - Toggles P0 output of PCA9570 I2C output expander connected to AD1 port ??  ?  
+- ```build/bin/grove_led```   - Varies Grove LED brightness (connected to AD1)  
+- ```build/bin/drive```       - Allows driving GoPiGo3 with key presses  
+                                spacebar: stop  
+                                w: forward at 150 DPS  
+                                s: spin  
+                                x: backward at 150 DPS  
+                                a: pivot ccw around left wheel  
+                                d: pivot cw around right wheel  
+                                q: exit (only q, cntrl-c does not exit)  
+- ```build/bin/myrobot```       - runs test robot (drive.cpp with status output if press key during motion)    
