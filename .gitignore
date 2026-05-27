@@ -1,9 +1,10 @@
 log
-.log
+logs
+*.log
 build
 bin
 lib
 __pycache__
-.cmake
+*.cmake
 CMakeCache.txt
-
+*.json
