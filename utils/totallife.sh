@@ -12,9 +12,9 @@
 #
 # Summed Keys:
 #   Undocking, ... after __
-#   execution prior:
+#   Prior Life:
 #   execution:
-#   prior dockings:
+#   Prior Dockings:
 #   h playtime
 #   h charging
 #   moved:          (odometer.log)
@@ -30,8 +30,8 @@ echo " "
 fn="${homedir}/logs/life.log"
 # echo -e "fn: $fn"
 ofn="${homedir}/logs/odometer.log"
-priorLife=`(awk -F'execution prior:' '{sum+=$2}END{print sum;}' $fn)`
-priorDockings=`(awk -F'prior dockings:' '{sum+=$2}END{print sum;}' $fn)`
+priorLife=`(awk -F'Prior Life:' '{sum+=$2}END{print sum;}' $fn)`
+priorDockings=`(awk -F'Prior Dockings:' '{sum+=$2}END{print sum;}' $fn)`
 totalAwake=`(awk -F'execution:' '{sum+=$2}END{print sum;}' $fn)`
 totalNaps=`(awk -F'nap for' '{sum+=$2}END{print sum;}' $fn)`
 totalThisLife=`(echo "scale=1; ($totalAwake + $totalNaps)" | bc)`
