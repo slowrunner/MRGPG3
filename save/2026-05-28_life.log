@@ -1,0 +1,35 @@
+# ******  MRGPG3 life.log  ******* 
+# First "life" 2026-05-26 
+# Prior Dockings: 2159 
+# Prior Life:  9637 hrs in unknown sessions
+# Prior Odometry: 3312 m  10865 ft (before GoPi5Go)
+# NEW BATTERY: 2026-04-23 at 2159 dockings, life 9637.1 hrs,  TalentCell YB1203000-USB 12v 3000mAh
+# ********************************
+2026-03-28 00:03|dave_node.py| ---- KiltedDave ROS 2 Docking 2159 : success at battery 10.1v after 3.1 h playtime 
+2026-04-14 18:36|------------ boot ------------
+2026-05-25 21:43|[logMaintenance.py.main]** First Boot of MRGPG3 - New GoPiGo3 Installer over PiOS Trixie-Lite **
+2026-05-25 21:43|[logMaintenance.py.main]** Routine Reboot **
+2026-05-25 21:43|[logMaintenance.py.main]** '' **
+2026-05-25 21:48|[safetyShutdown.py.main]Normal Exit
+2026-05-25 21:49|[logMaintenance.py.main]** Starting safetyShutdown.py at 12.59 volts. **
+2026-05-25 21:49|[safetyShutdown.py.main]Normal Exit
+2026-05-25 21:51|MainProcess.cancel() called
+2026-05-25 21:51|[logMaintenance.py.main]** Routine Reboot **
+2026-05-25 21:51|[logMaintenance.py.main]** 'Current Battery 12.3v EasyGoPiGo3 Reading 11.73v' **
+2026-05-25 22:28|[logMaintenance.py.main]** Starting safetyShutdown.py at 12.61 volts. **
+2026-05-25 22:30|------------ boot ------------
+2026-05-25 22:30|Current Battery 12.4v EasyGoPiGo3 Reading 11.84v
+2026-05-25 22:39|lifelogger.dEmain execution: 0.15
+2026-05-25 22:43|[logMaintenance.py.main]** Starting safetyShutdown.py at 12.60 volts. **
+2026-05-25 22:43|------------ boot ------------
+2026-05-25 22:43|Current Battery 12.2v EasyGoPiGo3 Reading 11.72v
+2026-05-27 15:34|dave_node.py| ---- MRGPG3-Dave ROS 2 Undocking, Charge Current 93 mA   12.2v after 2.3 h charging
+2026-05-27 15:39|dave_node.py| ---- MRGPG3-Dave ROS 2 Docking 2160 : success at battery 10.1v after 0.1 h playtime 
+2026-05-27 20:58|[logMaintenance.py.main]** installed Docker with step 1.sh and step 2.sh, reboot required **
+2026-05-27 20:58|lifelogger.dEmain execution: 46.25
+2026-05-27 20:58|[logMaintenance.py.main]** Routine Reboot **
+2026-05-27 20:58|[logMaintenance.py.main]** 'Current Battery 12.2v EasyGoPiGo3 Reading 11.70v' **
+2026-05-27 21:00|[logMaintenance.py.main]** Starting safetyShutdown.py at 12.63 volts. **
+2026-05-27 21:00|------------ boot ------------
+2026-05-27 21:00|Current Battery 12.3v EasyGoPiGo3 Reading 11.74v
+2026-05-28 00:00|lifelogger.dEmain execution: 3.00
